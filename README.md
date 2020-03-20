@@ -2,9 +2,7 @@
 
 ## Descrição do projeto: 
 ### Objetivo: 
-
-Desenvolver um ambiente restrito e monitorado por uma camera, onde dois robôs irão receber comandos baseando-se pelos dados da camera, simulando uma partida de futebol. 
-
+Desenvolver em um ambiente controlado e monitorado por uma câmera, com visão computacional baseada na biblioteca multiplataforma OpenCV, onde dois robôs irão receber comandos baseados nos dados da câmera, que serão enviados através de uma rede de comunicação utilizando NodeMCU, simulando uma partida de futebol.
 ### Metas:
 
 • Identificar imagens recebidas através da câmera
