@@ -1,0 +1,97 @@
+import numpy as np
+import cv2
+import paho.mqtt.client as mqtt
+
+broker_url = "mqtt.eclipse.org"
+
+
+def mqtt_client_connect():
+    print("connected to: ", broker_url)
+    client.connect(broker_url)
+    client.loop_start()
+
+client = mqtt.Client("BCI01")
+mqtt_client_connect()
+
+def findcolor(mask, num):
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    for contours in contours:
+        global mask1
+        area = cv2.contourArea(contours)
+    
+        if area > 3000:
+            suave = cv2.convexHull(contours)
+            cv2.drawContours(img, [suave], 0, (255, 0, 0), 3)
+            
+            M = cv2.moments(contours)
+            if M["m00"] == 0:
+                M["m00"] =1
+            x = int(M["m10"]/M["m00"])
+            y = int(M["m01"]/M["m00"])
+            cv2.circle(img, (x, y), 3, (0, 0, 0), -1)
+
+
+            if num == 1:
+                client.publish("bola", str(x) + "," + str(y) + "\n")
+
+            elif num == 2:
+                client.publish("amarelo", str(x) + "," + str(y) + "\n")
+
+            elif num == 3:
+                client.publish("verde", str(x) + "," + str(y) + "\n")
+
+            elif num == 4:
+                client.publish("azul", str(x) + "," + str(y) + "\n")
+
+            elif num == 5:
+                client.publish("lilas", str(x) + "," + str(y) + "\n")
+
+
+image = cv2.VideoCapture(2)
+
+#vermelho
+l_b1 = np.array([0, 120, 130])
+u_b1 = np.array([10, 255, 255])
+
+#amarelo
+l_b2 = np.array([20, 90, 150])
+u_b2 = np.array([255, 255, 255])
+
+#verde
+l_b3 = np.array([40, 90, 90])
+u_b3 = np.array([90, 255, 200])
+
+#azul
+l_b4 = np.array([100, 100, 50])
+u_b4 = np.array([125, 255, 255])
+
+#roxo/lilas
+l_b5 = np.array([140, 90, 50])
+u_b5 = np.array([160, 255, 255])
+
+while True:
+    ret, img = image.read()
+
+    if ret == True:
+        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+        mask1 = cv2.inRange(hsv, l_b1, u_b1)
+        mask2 = cv2.inRange(hsv, l_b2, u_b2)
+        mask3 = cv2.inRange(hsv, l_b3, u_b3)
+        mask4 = cv2.inRange(hsv, l_b4, u_b4)
+        mask5 = cv2.inRange(hsv, l_b5, u_b5)
+        findcolor(mask1, 1)
+        findcolor(mask2, 2)
+        findcolor(mask3, 3)
+        findcolor(mask4, 4)
+        findcolor(mask5, 5)
+
+        cv2.imshow("img", img)
+        Key = cv2.waitKey(1)
+        if Key == 27:
+            break
+
+image.release()
+cv2.destroyAllWindows()
+    
