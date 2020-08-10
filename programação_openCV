@@ -51,24 +51,24 @@ def findcolor(mask, num):
 image = cv2.VideoCapture(2)
 
 #vermelho
-l_b1 = np.array([0, 120, 130])
+l_b1 = np.array([0, 100, 100])
 u_b1 = np.array([10, 255, 255])
 
 #amarelo
-l_b2 = np.array([20, 90, 150])
-u_b2 = np.array([255, 255, 255])
+l_b2 = np.array([20, 100, 100])
+u_b2 = np.array([40, 255, 255])
 
 #verde
-l_b3 = np.array([40, 90, 90])
-u_b3 = np.array([90, 255, 200])
+l_b3 = np.array([40, 100, 20])
+u_b3 = np.array([85, 255, 255])
 
 #azul
-l_b4 = np.array([100, 100, 50])
-u_b4 = np.array([125, 255, 255])
+l_b4 = np.array([90, 100, 50])
+u_b4 = np.array([130, 255, 255])
 
 #roxo/lilas
-l_b5 = np.array([140, 90, 50])
-u_b5 = np.array([160, 255, 255])
+l_b5 = np.array([130, 50, 50])
+u_b5 = np.array([155, 255, 255])
 
 while True:
     ret, img = image.read()
