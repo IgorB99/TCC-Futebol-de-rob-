@@ -1,39 +1,39 @@
 -------------------------------------------------------------------------------------------------------------------------------
----------------------------- C”DIGO DESENVOLVIDO PELO GRUPO DE PESQUISA EM ROB”TICA DA UFS ------------------------------------
+---------------------------- C√ìDIGO DESENVOLVIDO PELO GRUPO DE PESQUISA EM ROB√ìTICA DA UFS ------------------------------------
 ------------------------------------------------ SITE: www.gprufs.org ---------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------
-------------- N√O ALTERE ESTA PARTE DO C”DIGO - INÕCIO ---------------
+------------- N√ÉO ALTERE ESTA PARTE DO C√ìDIGO - IN√çCIO ---------------
 ----------------------------------------------------------------------
--- DeclaraÁ„o das vari·veis do jogo
+-- Declara√ß√£o das vari√°veis do jogo
 global  b1,b2,b3,b4,b5,ball,gtopy,gboty,ftop,fbot,fleftx,frightx
 global  y1,y2,y3,y4,y5
 ----------------------------------------------------------------------
--------------- N√O ALTERE ESTA PARTE DO C”DIGO - FIM -----------------
+-------------- N√ÉO ALTERE ESTA PARTE DO C√ìDIGO - FIM -----------------
 ----------------------------------------------------------------------
 
 
 
 
 
--- InÌcio da funÁ„o que controla o time azul
--- (n„o altere a funÁ„o strategyb)
+-- In√≠cio da fun√ß√£o que controla o time azul
+-- (n√£o altere a fun√ß√£o strategyb)
 On strategyB
 
 
 ----------------------------------------------------------------------------------
--------------------------- INÕCIO DA ESTRAT…GIA DE JOGO --------------------------
+-------------------------- IN√çCIO DA ESTRAT√âGIA DE JOGO --------------------------
 ----------------------------------------------------------------------------------
-------- FunÁıes de controle b·sicas (para uso nas estratÈgias dos alunos) --------
--- vai_para(robÙ, posicao.x, posicao.y, aceleraÁ„o)
--- olhar_para(robÙ, posicao.x, posicao.y)
--- andar_frente(robÙ,velocidade)
--- andar_fundo(robÙ,velocidade)
--- girar_horario(robÙ,velocidade_‚ngular)
--- girar_antihorario(robÙ,velocidade_‚ngular)
+------- Fun√ß√µes de controle b√°sicas (para uso nas estrat√©gias dos alunos) --------
+-- vai_para(rob√¥, posicao.x, posicao.y, acelera√ß√£o)
+-- olhar_para(rob√¥, posicao.x, posicao.y)
+-- andar_frente(rob√¥,velocidade)
+-- andar_fundo(rob√¥,velocidade)
+-- girar_horario(rob√¥,velocidade_√¢ngular)
+-- girar_antihorario(rob√¥,velocidade_√¢ngular)
 
------------------------------ AQUI COME«A A SUA ESTRAT…GIA ------------------------
+----------------------------- AQUI COME√áA A SUA ESTRAT√âGIA ------------------------
 meioV = (fleftx + frightx)/2
 meioH = (ftop + fbot)/2
 
@@ -229,11 +229,13 @@ else if distb1 > 10 then
  
      if  ball.y > gtopy then
 
-       olhar_para(b1,ball.x,ball.y)
+
+       olhar_para(b1,ball.x,ball.y)
  
        vai_para(b1,90,gtopy-2,100)
  
-       if ball.x > 80 then
+
+       if ball.x > 80 then
  
           olhar_para(b1,ball.x,ball.y)
  
@@ -282,30 +284,30 @@ end if
 
 
 
------------------------------ AQUI TERMINA A SUA ESTRAT…GIA ------------------------
+----------------------------- AQUI TERMINA A SUA ESTRAT√âGIA ------------------------
 
 ----------------------------------------------------------------------
---------------------- FIM DA ESTRAT…GIA DE JOGO ----------------------
+--------------------- FIM DA ESTRAT√âGIA DE JOGO ----------------------
 ----------------------------------------------------------------------
 
 
--- Fim da funÁ„o que controla o time azul
+-- Fim da fun√ß√£o que controla o time azul
 End
 
 
 
 --------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------- ESPA«O PARA FUN«’ES DEFINIDAS PELO USU¡RIO --------------------------------------------
+---------------------------------------------- ESPA√áO PARA FUN√á√ïES DEFINIDAS PELO USU√ÅRIO --------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------- AQUI VOC  PODE DEFINIR FUN«’ES PARA DUAS ESTRAT…GIAS ------------------------------------
+-------------------------------------------- AQUI VOC√ä PODE DEFINIR FUN√á√ïES PARA DUAS ESTRAT√âGIAS ------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
--- vocÍ pode definir funÁıes para deixar seu cÛdigo mais organizado e facilitar o jogo para vocÍ
--- por exemplo, vocÍ pode criar dois tipos de zagueiros e colocar cada tipo em uma funÁ„o - ZAG1 E ZAG2
--- dessa forma se o seu zagueiro ZAG1 n„o estiver jogando bem vocÍ pode pedir tempo de jogo e fazer a substituiÁ„o pelo zagueiro ZAG2.
+-- voc√™ pode definir fun√ß√µes para deixar seu c√≥digo mais organizado e facilitar o jogo para voc√™
+-- por exemplo, voc√™ pode criar dois tipos de zagueiros e colocar cada tipo em uma fun√ß√£o - ZAG1 E ZAG2
+-- dessa forma se o seu zagueiro ZAG1 n√£o estiver jogando bem voc√™ pode pedir tempo de jogo e fazer a substitui√ß√£o pelo zagueiro ZAG2.
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------- IMPORTANTE -------------------------------------------------------------------
------ as funÁıes definidas pelo usu·rio n„o podem, em hipÛtese alguma, enviar comandos para o robÙ utilizando a funÁ„o VELOCITY ------
+----- as fun√ß√µes definidas pelo usu√°rio n√£o podem, em hip√≥tese alguma, enviar comandos para o rob√¥ utilizando a fun√ß√£o VELOCITY ------
 ---------------------------------------------- como especificado nas regras com campeonato -------------------------------------------
 
 
@@ -317,53 +319,53 @@ End
 
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------- FIM DAS FUN«’ES DEFINIDAS PELO USU¡RIO --------------------------------------------
+-------------------------------------------------- FIM DAS FUN√á√ïES DEFINIDAS PELO USU√ÅRIO --------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------- INÕCIO DAS FUN«’ES  DE CONTROLE --------------------------------------------------
+-------------------------------------------- IN√çCIO DAS FUN√á√ïES  DE CONTROLE --------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------- INÕCIO DAS FUN«’ES  DE CONTROLE --------------------------------------------------
+-------------------------------------------- IN√çCIO DAS FUN√á√ïES  DE CONTROLE --------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------- INÕCIO DAS FUN«’ES  DE CONTROLE --------------------------------------------------
+-------------------------------------------- IN√çCIO DAS FUN√á√ïES  DE CONTROLE --------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------- INÕCIO DAS FUN«’ES  DE CONTROLE --------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------------------------------------------------------
--------------------------------------- … PROIBÕDO EDITAR O C”DIGO A PARTIR DAQUI ----------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------
--------------------------------------- … PROIBÕDO EDITAR O C”DIGO A PARTIR DAQUI ----------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------
--------------------------------------- … PROIBÕDO EDITAR O C”DIGO A PARTIR DAQUI ----------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------
--------------------------------------- … PROIBÕDO EDITAR O C”DIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------- IN√çCIO DAS FUN√á√ïES  DE CONTROLE --------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
 
 
 
 -------------------------------------------------------------------------------------------------------------------------------
----------------------------------------- FUN«’ES DEFINIDAS E SEUS PAR¬METROS --------------------------------------------------
+-------------------------------------- √â PROIB√çDO EDITAR O C√ìDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- √â PROIB√çDO EDITAR O C√ìDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- √â PROIB√çDO EDITAR O C√ìDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- √â PROIB√çDO EDITAR O C√ìDIGO A PARTIR DAQUI ----------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
 
------------------------------ FunÁıes de controle b·sicas (para uso nas estratÈgias dos alunos) -------------------------------
--- vai_para(robÙ, posicao.x, posicao.y, aceleraÁ„o)
--- olhar_para(robÙ, posicao.x, posicao.y)
--- andar_frente(robÙ,velocidade)
--- andar_fundo(robÙ,velocidade)
--- girar_horario(robÙ,velocidade_‚ngular)
--- girar_antihorario(robÙ,velocidade_‚ngular)
 
------------------------------------ FunÁıes auxiliares (n„o envial comando para os robÙs) --------------------------------------
--- tanh(‚ngulo)
--- vai_linear(robÙ,posicao.x, posicao.y, aceleraÁ„o)
--- distancia(robÙ,posicao.x, posicao.y)
+
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------- FUN√á√ïES DEFINIDAS E SEUS PAR√ÇMETROS --------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------- Fun√ß√µes de controle b√°sicas (para uso nas estrat√©gias dos alunos) -------------------------------
+-- vai_para(rob√¥, posicao.x, posicao.y, acelera√ß√£o)
+-- olhar_para(rob√¥, posicao.x, posicao.y)
+-- andar_frente(rob√¥,velocidade)
+-- andar_fundo(rob√¥,velocidade)
+-- girar_horario(rob√¥,velocidade_√¢ngular)
+-- girar_antihorario(rob√¥,velocidade_√¢ngular)
+
+----------------------------------- Fun√ß√µes auxiliares (n√£o envial comando para os rob√¥s) --------------------------------------
+-- tanh(√¢ngulo)
+-- vai_linear(rob√¥,posicao.x, posicao.y, acelera√ß√£o)
+-- distancia(rob√¥,posicao.x, posicao.y)
 -- limitavelocidade(c)
--- olhar(robÙ, posicao.x, posicao.y)
--- olhar_fundo(robÙ, posicao.x, posicao.y)
--- sair_parede(robÙ,velocidade linear do robÙ)
+-- olhar(rob√¥, posicao.x, posicao.y)
+-- olhar_fundo(rob√¥, posicao.x, posicao.y)
+-- sair_parede(rob√¥,velocidade linear do rob√¥)
 
 
 
@@ -371,9 +373,9 @@ End
 
 
 
------------------------------------------------------- FUN«√O VAI_PARA --------------------------------------------------------
--- Faz com que o robÙ v· para a posiÁ„o especificada
----- Essa posiÁ„o pode ser um ponto no campo, a bola ou mesmo um outro robÙ
+------------------------------------------------------ FUN√á√ÉO VAI_PARA --------------------------------------------------------
+-- Faz com que o rob√¥ v√° para a posi√ß√£o especificada
+---- Essa posi√ß√£o pode ser um ponto no campo, a bola ou mesmo um outro rob√¥
 on vai_para(robo3, px3, py3, acelera2)
 
   klin = 1
@@ -415,9 +417,9 @@ end
 
 
 
------------------------------------------------------- FUN«√O OLHAR_PARA ----------------------------------------------------
--- Faz com que o robÙ "olhe" para a posiÁ„o especificada
----- Essa posiÁ„o pode ser um ponto no campo, a bola ou mesmo um outro robÙ
+------------------------------------------------------ FUN√á√ÉO OLHAR_PARA ----------------------------------------------------
+-- Faz com que o rob√¥ "olhe" para a posi√ß√£o especificada
+---- Essa posi√ß√£o pode ser um ponto no campo, a bola ou mesmo um outro rob√¥
 on olhar_para(robo13, px13, py13)
 
   kang = 0.4
@@ -440,8 +442,8 @@ end
 
 
 
------------------------------------------------------- FUN«√O ANDAR_FRENTE -------------------------------------------------
--- Faz com que o robÙ ande para frente com a velocidade especificada
+------------------------------------------------------ FUN√á√ÉO ANDAR_FRENTE -------------------------------------------------
+-- Faz com que o rob√¥ ande para frente com a velocidade especificada
 on andar_frente(robo21,vel1)
 
   v = limitavelocidade(vel1)
@@ -468,8 +470,8 @@ end
 
 
 
------------------------------------------------------- FUN«√O ANDAR_FUNDO -------------------------------------------------
--- Faz com que o robÙ ande para tr·s com a velocidade especificada
+------------------------------------------------------ FUN√á√ÉO ANDAR_FUNDO -------------------------------------------------
+-- Faz com que o rob√¥ ande para tr√°s com a velocidade especificada
 on andar_fundo(robo22,vel2)
 
   v = limitavelocidade(-vel2)
@@ -496,8 +498,8 @@ end
 
 
 
------------------------------------------------------- FUN«√O GIRAR_HORARIO -------------------------------------------------
--- Faz com que o robÙ ande para tr·s com a velocidade especificada
+------------------------------------------------------ FUN√á√ÉO GIRAR_HORARIO -------------------------------------------------
+-- Faz com que o rob√¥ ande para tr√°s com a velocidade especificada
 on girar_horario(robo23,vel3)
 
   vl = limitavelocidade(vel3)
@@ -512,8 +514,8 @@ end
 
 
 
------------------------------------------------------- FUN«√O GIRAR_ANTIHORARIO -------------------------------------------------
--- Faz com que o robÙ ande para tr·s com a velocidade especificada
+------------------------------------------------------ FUN√á√ÉO GIRAR_ANTIHORARIO -------------------------------------------------
+-- Faz com que o rob√¥ ande para tr√°s com a velocidade especificada
 on girar_antihorario(robo24,vel4)
 
   vl = limitavelocidade(-vel4)
@@ -528,8 +530,8 @@ end
 
 
 
------------------------------------------------------- FUN«√O TANH --------------------------------------------------------
--- Calcula a tangente hiperbÛlica de e
+------------------------------------------------------ FUN√á√ÉO TANH --------------------------------------------------------
+-- Calcula a tangente hiperb√≥lica de e
 on tanh(e)
 
   expo=2.7182
@@ -546,10 +548,10 @@ end
 
 
 
------------------------------------------------------- FUN«√O VAI_LINEAR --------------------------------------------------------
--- calcula a velocidade linear necess·ria para chegar ao destino (funÁ„o usada pela vai_para)
+------------------------------------------------------ FUN√á√ÉO VAI_LINEAR --------------------------------------------------------
+-- calcula a velocidade linear necess√°ria para chegar ao destino (fun√ß√£o usada pela vai_para)
 on vai_linear(robo1,px1,py1,acelera)
-  -- aceleraÁ„o de 0 a 125 (125 È aceleraÁ„o m·xima)
+  -- acelera√ß√£o de 0 a 125 (125 √© acelera√ß√£o m√°xima)
   
   v_min = 50
   if acelera > 125 then acelera = 125
@@ -567,9 +569,9 @@ end
 
 
 
------------------------------------------------------- FUN«√O DISTANCIA --------------------------------------------------------
--- Calcula a dist‚ncia do robÙ para um ponto especificado
----- Esse ponto pode ser um ponto no campo, a bola ou mesmo um outro robÙ
+------------------------------------------------------ FUN√á√ÉO DISTANCIA --------------------------------------------------------
+-- Calcula a dist√¢ncia do rob√¥ para um ponto especificado
+---- Esse ponto pode ser um ponto no campo, a bola ou mesmo um outro rob√¥
 On distancia(robo2,px2,py2)
 
   dx= robo2.pos.x-px2
@@ -587,8 +589,8 @@ End
 
 
 
------------------------------------------------------- FUN«√O LIMITAVELOCIDADE ----------------------------------------------------
--- Limita a velocidade calculada para o m·ximo permitido para o robÙ
+------------------------------------------------------ FUN√á√ÉO LIMITAVELOCIDADE ----------------------------------------------------
+-- Limita a velocidade calculada para o m√°ximo permitido para o rob√¥
 on limitavelocidade(c)
 
   if c > 125 then 
@@ -607,9 +609,9 @@ end
 
 
 
--------------------------------------------------------- FUN«√O OLHAR --------------------------------------------------------------
--- Calcula o ‚ngulo que o robÙ precisa girar para que o robÙ "olhe" com a frente para a posiÁ„o especificada
--- o ‚ngulo È retornado de -180 a 180
+-------------------------------------------------------- FUN√á√ÉO OLHAR --------------------------------------------------------------
+-- Calcula o √¢ngulo que o rob√¥ precisa girar para que o rob√¥ "olhe" com a frente para a posi√ß√£o especificada
+-- o √¢ngulo √© retornado de -180 a 180
 on olhar(robo, px, py)
   
   fi = atan((robo.pos.y-py),(robo.pos.x-px))*180/PI
@@ -655,9 +657,9 @@ end
 
 
 
--------------------------------------------------------- FUN«√O OLHAR_FUNDO ----------------------------------------------------------
--- Calcula o ‚ngulo que o robÙ precisa girar para que o robÙ "olhe" com o fundo para a posiÁ„o especificada
--- o ‚ngulo È retornado de -180 a 180
+-------------------------------------------------------- FUN√á√ÉO OLHAR_FUNDO ----------------------------------------------------------
+-- Calcula o √¢ngulo que o rob√¥ precisa girar para que o rob√¥ "olhe" com o fundo para a posi√ß√£o especificada
+-- o √¢ngulo √© retornado de -180 a 180
 on olhar_fundo(robo10, px10, py10)
 
   fi = atan((robo10.pos.y-py10),(robo10.pos.x-px10))*180/PI
@@ -695,11 +697,11 @@ end
 
 
 
--------------------------------------------------------- FUN«√O SAIR_PAREDE --------------------------------------------------------------
--- essa funÁ„o gera um flag que pode ser usado para fazer com que o robÙ recue
--- caso esteja preso em uma parede ou em outro robÙ. Essa funÁ„o retorna o seguinte:
-  -- flag = 0 : ok (n„o precisa sair)
-  -- flag = 1 : precisa sair de rÈ
+-------------------------------------------------------- FUN√á√ÉO SAIR_PAREDE --------------------------------------------------------------
+-- essa fun√ß√£o gera um flag que pode ser usado para fazer com que o rob√¥ recue
+-- caso esteja preso em uma parede ou em outro rob√¥. Essa fun√ß√£o retorna o seguinte:
+  -- flag = 0 : ok (n√£o precisa sair)
+  -- flag = 1 : precisa sair de r√©
   -- flag = 2 : precisa sair pra frente
 on sair_parede(robo7,v7)
 
@@ -711,11 +713,11 @@ on sair_parede(robo7,v7)
 
   if rz < -180 then rz = rz + 360        --previne estouro de calculos
 
-  if rz > 180 then rz = rz - 360        --coloca o ‚ngulo entre 0 e + ou - 180
+  if rz > 180 then rz = rz - 360        --coloca o √¢ngulo entre 0 e + ou - 180
 
-  -- rz È o angulo de orientaÁ„o do robÙ em -180 a 180
+  -- rz √© o angulo de orienta√ß√£o do rob√¥ em -180 a 180
   -- flag = 0 : ok
-  -- flag = 1 : sair de rÈ
+  -- flag = 1 : sair de r√©
   -- flag = 2 : sair pra frente
 
   flag = 0
@@ -764,16 +766,16 @@ on sair_parede(robo7,v7)
   a9 = olhar(robo7,b4.pos.x,b4.pos.y)
   a0 = olhar(robo7,b5.pos.x,b5.pos.y)
 
-  if d1 < 0.1 then d1 = 10     -- evita que o robÙ desvie de si
-  if d2 < 0.1 then d2 = 10     -- evita que o robÙ desvie de si
-  if d3 < 0.1 then d3 = 10     -- evita que o robÙ desvie de si
-  if d4 < 0.1 then d4 = 10     -- evita que o robÙ desvie de si
-  if d5 < 0.1 then d5 = 10     -- evita que o robÙ desvie de si
-  if d6 < 0.1 then d6 = 10     -- evita que o robÙ desvie de si
-  if d7 < 0.1 then d7 = 10     -- evita que o robÙ desvie de si
-  if d8 < 0.1 then d8 = 10     -- evita que o robÙ desvie de si
-  if d9 < 0.1 then d9 = 10     -- evita que o robÙ desvie de si
-  if d0 < 0.1 then d0 = 10     -- evita que o robÙ desvie de si
+  if d1 < 0.1 then d1 = 10     -- evita que o rob√¥ desvie de si
+  if d2 < 0.1 then d2 = 10     -- evita que o rob√¥ desvie de si
+  if d3 < 0.1 then d3 = 10     -- evita que o rob√¥ desvie de si
+  if d4 < 0.1 then d4 = 10     -- evita que o rob√¥ desvie de si
+  if d5 < 0.1 then d5 = 10     -- evita que o rob√¥ desvie de si
+  if d6 < 0.1 then d6 = 10     -- evita que o rob√¥ desvie de si
+  if d7 < 0.1 then d7 = 10     -- evita que o rob√¥ desvie de si
+  if d8 < 0.1 then d8 = 10     -- evita que o rob√¥ desvie de si
+  if d9 < 0.1 then d9 = 10     -- evita que o rob√¥ desvie de si
+  if d0 < 0.1 then d0 = 10     -- evita que o rob√¥ desvie de si
 
   if (d1 < dmin and abs(a1) < olhando and v7 > 0) then flag = 1
   if (d2 < dmin and abs(a2) < olhando and v7 > 0) then flag = 1
@@ -812,16 +814,16 @@ on sair_parede(robo7,v7)
   a9 = olhar(robo7,b4.pos.x,b4.pos.y)
   a0 = olhar(robo7,b5.pos.x,b5.pos.y)
 
-  if d1 < 0.1 then d1 = 10     -- evita que o robÙ desvie de si
-  if d2 < 0.1 then d2 = 10     -- evita que o robÙ desvie de si
-  if d3 < 0.1 then d3 = 10     -- evita que o robÙ desvie de si
-  if d4 < 0.1 then d4 = 10     -- evita que o robÙ desvie de si
-  if d5 < 0.1 then d5 = 10     -- evita que o robÙ desvie de si
-  if d6 < 0.1 then d6 = 10     -- evita que o robÙ desvie de si
-  if d7 < 0.1 then d7 = 10     -- evita que o robÙ desvie de si
-  if d8 < 0.1 then d8 = 10     -- evita que o robÙ desvie de si
-  if d9 < 0.1 then d9 = 10     -- evita que o robÙ desvie de si
-  if d0 < 0.1 then d0 = 10     -- evita que o robÙ desvie de si
+  if d1 < 0.1 then d1 = 10     -- evita que o rob√¥ desvie de si
+  if d2 < 0.1 then d2 = 10     -- evita que o rob√¥ desvie de si
+  if d3 < 0.1 then d3 = 10     -- evita que o rob√¥ desvie de si
+  if d4 < 0.1 then d4 = 10     -- evita que o rob√¥ desvie de si
+  if d5 < 0.1 then d5 = 10     -- evita que o rob√¥ desvie de si
+  if d6 < 0.1 then d6 = 10     -- evita que o rob√¥ desvie de si
+  if d7 < 0.1 then d7 = 10     -- evita que o rob√¥ desvie de si
+  if d8 < 0.1 then d8 = 10     -- evita que o rob√¥ desvie de si
+  if d9 < 0.1 then d9 = 10     -- evita que o rob√¥ desvie de si
+  if d0 < 0.1 then d0 = 10     -- evita que o rob√¥ desvie de si
 
   if (d1 < dmin and abs(a1) > olhando and v7 < 0) then flag = 2
   if (d2 < dmin and abs(a2) > olhando and v7 < 0) then flag = 2
@@ -838,11 +840,11 @@ on sair_parede(robo7,v7)
   
 end
 -------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------- FIM DAS FUN«’ES  DE CONTROLE ---------------------------------------------------
+---------------------------------------------- FIM DAS FUN√á√ïES  DE CONTROLE ---------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------- FIM DAS FUN«’ES  DE CONTROLE ---------------------------------------------------
+---------------------------------------------- FIM DAS FUN√á√ïES  DE CONTROLE ---------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------- FIM DAS FUN«’ES  DE CONTROLE ---------------------------------------------------
+---------------------------------------------- FIM DAS FUN√á√ïES  DE CONTROLE ---------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------- FIM DAS FUN«’ES  DE CONTROLE ---------------------------------------------------
+---------------------------------------------- FIM DAS FUN√á√ïES  DE CONTROLE ---------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------
