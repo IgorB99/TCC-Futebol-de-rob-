@@ -1,0 +1,848 @@
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------- CÓDIGO DESENVOLVIDO PELO GRUPO DE PESQUISA EM ROBÓTICA DA UFS ------------------------------------
+------------------------------------------------ SITE: www.gprufs.org ---------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------
+------------- NÃO ALTERE ESTA PARTE DO CÓDIGO - INÍCIO ---------------
+----------------------------------------------------------------------
+-- Declaração das variáveis do jogo
+global  b1,b2,b3,b4,b5,ball,gtopy,gboty,ftop,fbot,fleftx,frightx
+global  y1,y2,y3,y4,y5
+----------------------------------------------------------------------
+-------------- NÃO ALTERE ESTA PARTE DO CÓDIGO - FIM -----------------
+----------------------------------------------------------------------
+
+
+
+
+
+-- Início da função que controla o time azul
+-- (não altere a função strategyb)
+On strategyB
+
+
+----------------------------------------------------------------------------------
+-------------------------- INÍCIO DA ESTRATÉGIA DE JOGO --------------------------
+----------------------------------------------------------------------------------
+------- Funções de controle básicas (para uso nas estratégias dos alunos) --------
+-- vai_para(robô, posicao.x, posicao.y, aceleração)
+-- olhar_para(robô, posicao.x, posicao.y)
+-- andar_frente(robô,velocidade)
+-- andar_fundo(robô,velocidade)
+-- girar_horario(robô,velocidade_ângular)
+-- girar_antihorario(robô,velocidade_ângular)
+
+----------------------------- AQUI COMEÇA A SUA ESTRATÉGIA ------------------------
+meioV = (fleftx + frightx)/2
+meioH = (ftop + fbot)/2
+
+--calcula dist robo b4 -> bola
+dist_b4_ballX = (ball.x - b4.pos.x)
+dist_b4_ballY = (ball.y - b4.pos.y)
+distb4 = sqrt((dist_b4_ballX*dist_b4_ballX)+(dist_b4_ballY*dist_b4_ballY))
+
+dist_b1_ballX = (ball.x - b1.pos.x)
+dist_b1_ballY = (ball.y - b1.pos.y)
+distb1 = sqrt((dist_b1_ballX*dist_b1_ballX)+(dist_b1_ballY*dist_b1_ballY))
+
+
+dist_b3_ballX = (ball.x - b3.pos.x)
+dist_b3_ballY = (ball.y - b3.pos.y)
+distb3 = sqrt((dist_b3_ballX*dist_b3_ballX)+(dist_b3_ballY*dist_b3_ballY))
+
+
+dist_b2_ballX = (ball.x - b2.pos.x)
+dist_b2_ballY = (ball.y - b2.pos.y)
+distb2 = sqrt((dist_b2_ballX*dist_b2_ballX)+(dist_b2_ballY*dist_b2_ballY))
+
+
+dist_b5_ballX = (ball.x - b5.pos.x)
+dist_b5_ballY = (ball.y - b5.pos.y)
+distb5 = sqrt((dist_b5_ballX*dist_b5_ballX)+(dist_b5_ballY*dist_b5_ballY))
+
+
+
+--zagueiro 1
+
+
+olhar_para(b3, (ball.x), (ball.y))
+
+
+if (ball.x) > b3.pos.x then
+	olhar_para(b3, (ball.x), (ball.y))
+	if ball.y < b3.pos.y then
+		vai_para(b3, (frightx-2) ,60,110)
+	else
+		vai_para(b3, (frightx-2), (gtopy+5),110) 
+	end if
+	if distb3 < 3.8 then
+		vai_para(b3, (ball.x), (ball.y-5),80)
+		girar_horario(b3,100)
+
+	end if
+else
+  if (abs(b5.pos.x - b3.pos.x)) < 6 then
+	olhar_para(b3, (ball.x), (ball.y))
+	vai_para(b3, 50, 50, 100)
+  end if
+  if (ball.x-1) > (meioV+10) and (ball.y+1)> meioH then
+    --vai_para(b3, (ball.x), (ball.y), 125)
+    olhar_para(b3, (ball.x), (ball.y))
+    if distb3 < 50 then
+      vai_para(b3, ball.x, ball.y, 125)
+      if distb3 < 3.8 then
+	  girar_antihorario(b3,100)
+      end if
+    else 
+      vai_para(b3, 79, ball.y, 110)
+    end if
+  else
+    if ball.y-3 < meioH then
+	olhar_para(b3, (ball.x), (ball.y))
+	vai_para(b3, 79, 58, 110)
+    else
+	olhar_para(b3, (ball.x), (ball.y))
+        vai_para(b3, 78, ball.y, 110)
+    end if    
+  end if 
+end if
+
+
+
+
+--zagueiro 2
+
+olhar_para(b2, ball.x, ball.y)
+
+
+if (ball.x) > b2.pos.x then
+
+	olhar_para(b2, ball.x, ball.y)
+	
+	if ball.y > b2.pos.y then
+		vai_para(b2, (frightx-2) ,23,110)
+	else
+		vai_para(b2, (frightx-2), (gboty-5),110) 
+	end if
+
+	if distb2 < 3.8 then
+		vai_para(b2, (ball.x), (ball.y+5),80)
+		girar_antihorario(b2,100)
+	end if
+
+else
+  if (abs(b4.pos.x - b2.pos.x)) < 5 then
+	olhar_para(b2, ball.x, ball.y)
+	vai_para(b2, 50,50,125)
+  end if
+  if (ball.x-1) > (meioV+10) and  (ball.y+1) < meioH then
+    --vai_para(b2, (ball.x), (ball.y), 125)
+    olhar_para(b2, ball.x, ball.y) 
+    if distb2 < 50 then
+      vai_para(b2, ball.x, ball.y, 125)
+      if distb2 < 3.8 then
+    	  girar_horario(b2,100)
+      end if
+   end if
+  else
+    if ball.y+3 > meioH then
+	olhar_para(b2, ball.x, ball.y)
+	vai_para(b2, 78, 23, 110)
+    else
+	olhar_para(b2, ball.x, ball.y)
+        vai_para(b2, 78, ball.y, 110)
+    end if
+  end if 
+end if
+
+
+
+
+--atacante 1
+
+if ball.x - 3 < b4.pos.x  then
+	if ball.y < meioH + 1 then
+			
+		if distb4 < 3.8 then
+			girar_horario(b4, 100)
+		else
+			vai_para(b4, ball.x, ball.y, 110)
+		end if
+	else 
+		vai_para(b4, b5.pos.x+5, meioH-10,115)
+	end if	
+else  
+	vai_para(b4, 62, 23, 110)
+
+end if
+
+
+
+-- atacante 2
+
+
+if ball.x - 3 < b5.pos.x  then
+	if ball.y > meioH - 1 then
+		if distb5 < 3.8 then
+			girar_antihorario(b5, 100)
+		else
+			vai_para(b5, ball.x, ball.y, 110)
+		end if
+	else 
+		vai_para(b5, b4.pos.x+5, meioH+10, 115)
+	end if
+
+else 
+	vai_para(b5, 61, 60, 110)	
+end if
+
+
+
+
+--goleiro
+
+
+if distb1 < 10 and ball.x > 60 then
+
+   if distb1 < 4  then
+
+     if ball.y > meioH then
+
+        girar_antihorario(b1,120)
+ 
+     else
+
+        girar_horario(b1,120)
+
+     end if
+
+   else 
+ 
+      vai_para(b1,ball.x,ball.y,110)
+
+   end if
+
+else if distb1 > 10 then
+ 
+   if ball.y > meioH then
+ 
+     if  ball.y > gtopy then
+
+       olhar_para(b1,ball.x,ball.y)
+ 
+       vai_para(b1,90,gtopy-2,100)
+ 
+       if ball.x > 80 then
+ 
+          olhar_para(b1,ball.x,ball.y)
+ 
+          vai_para(b1,90,gtopy,100)
+ 
+       end if 
+ 
+     else
+ 
+       olhar_para(b1,ball.x,ball.y)
+ 
+       vai_para(b1,90,ball.y,125)
+
+     end if
+ 
+   else
+ 
+     if ball.y < gboty then
+ 
+       olhar_para(b1,ball.x,ball.y)
+ 
+       vai_para(b1,90,gboty+2,100)
+ 
+       if ball.x > 81 then       
+ 
+         olhar_para(b1,ball.x,ball.y)
+ 
+         vai_para(b1,90,gboty,100)
+ 
+       end if 
+ 
+     else
+ 
+       olhar_para(b1,ball.x,ball.y)
+ 
+       vai_para(b1,90,ball.y,125)
+ 
+     end if
+ 
+   end if
+ 
+end if
+
+
+
+
+
+
+----------------------------- AQUI TERMINA A SUA ESTRATÉGIA ------------------------
+
+----------------------------------------------------------------------
+--------------------- FIM DA ESTRATÉGIA DE JOGO ----------------------
+----------------------------------------------------------------------
+
+
+-- Fim da função que controla o time azul
+End
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------- ESPAÇO PARA FUNÇÕES DEFINIDAS PELO USUÁRIO --------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------- AQUI VOCÊ PODE DEFINIR FUNÇÕES PARA DUAS ESTRATÉGIAS ------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+-- você pode definir funções para deixar seu código mais organizado e facilitar o jogo para você
+-- por exemplo, você pode criar dois tipos de zagueiros e colocar cada tipo em uma função - ZAG1 E ZAG2
+-- dessa forma se o seu zagueiro ZAG1 não estiver jogando bem você pode pedir tempo de jogo e fazer a substituição pelo zagueiro ZAG2.
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------- IMPORTANTE -------------------------------------------------------------------
+----- as funções definidas pelo usuário não podem, em hipótese alguma, enviar comandos para o robô utilizando a função VELOCITY ------
+---------------------------------------------- como especificado nas regras com campeonato -------------------------------------------
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------- FIM DAS FUNÇÕES DEFINIDAS PELO USUÁRIO --------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------- INÍCIO DAS FUNÇÕES  DE CONTROLE --------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------- INÍCIO DAS FUNÇÕES  DE CONTROLE --------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------- INÍCIO DAS FUNÇÕES  DE CONTROLE --------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------- INÍCIO DAS FUNÇÕES  DE CONTROLE --------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- É PROIBÍDO EDITAR O CÓDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- É PROIBÍDO EDITAR O CÓDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- É PROIBÍDO EDITAR O CÓDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------- É PROIBÍDO EDITAR O CÓDIGO A PARTIR DAQUI ----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------- FUNÇÕES DEFINIDAS E SEUS PARÂMETROS --------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------- Funções de controle básicas (para uso nas estratégias dos alunos) -------------------------------
+-- vai_para(robô, posicao.x, posicao.y, aceleração)
+-- olhar_para(robô, posicao.x, posicao.y)
+-- andar_frente(robô,velocidade)
+-- andar_fundo(robô,velocidade)
+-- girar_horario(robô,velocidade_ângular)
+-- girar_antihorario(robô,velocidade_ângular)
+
+----------------------------------- Funções auxiliares (não envial comando para os robôs) --------------------------------------
+-- tanh(ângulo)
+-- vai_linear(robô,posicao.x, posicao.y, aceleração)
+-- distancia(robô,posicao.x, posicao.y)
+-- limitavelocidade(c)
+-- olhar(robô, posicao.x, posicao.y)
+-- olhar_fundo(robô, posicao.x, posicao.y)
+-- sair_parede(robô,velocidade linear do robô)
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO VAI_PARA --------------------------------------------------------
+-- Faz com que o robô vá para a posição especificada
+---- Essa posição pode ser um ponto no campo, a bola ou mesmo um outro robô
+on vai_para(robo3, px3, py3, acelera2)
+
+  klin = 1
+  kang = 0.4
+  v = vai_linear(robo3, px3, py3, acelera2)
+  w = olhar(robo3, px3, py3) -- retorna angulo entre -180 e +180
+  if w > 90 or w < -90 then
+    w = olhar_fundo(robo3, px3, py3)
+    v = - v
+  end if
+  if abs(w) > 50 and abs(v) > 80 then
+    if v > 0 then v = 80
+	if v < 0 then v = -80
+  end if
+  vr = klin*v + kang*w
+  vl = klin*v - kang*w
+  vl = limitavelocidade(vl)
+  vr = limitavelocidade(vr)
+
+  flag1 = sair_parede(robo3,v)
+
+    if (flag1 < 0.5) then
+      velocity(robo3,vl,vr)
+    end if
+
+    if (flag1 > 0.5 and flag1 < 1.5) then
+      velocity(robo3,-125,-125)
+    end if
+
+    if (flag1 > 1.5) then
+      velocity(robo3,125,125)
+    end if
+
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO OLHAR_PARA ----------------------------------------------------
+-- Faz com que o robô "olhe" para a posição especificada
+---- Essa posição pode ser um ponto no campo, a bola ou mesmo um outro robô
+on olhar_para(robo13, px13, py13)
+
+  kang = 0.4
+  w = olhar(robo13, px13, py13) -- retorna angulo entre -180 e +180
+  if w > 90 or w < -90 then
+    w = olhar_fundo(robo13, px13, py13)
+  end if
+  vr =   kang*w
+  vl = - kang*w
+  vl = limitavelocidade(vl)
+  vr = limitavelocidade(vr)
+
+  velocity(robo13,vl,vr)
+
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO ANDAR_FRENTE -------------------------------------------------
+-- Faz com que o robô ande para frente com a velocidade especificada
+on andar_frente(robo21,vel1)
+
+  v = limitavelocidade(vel1)
+
+  flag21 = sair_parede(robo21,v)
+
+    if (flag21 < 0.5) then
+      velocity(robo21,v,v)
+    end if
+
+    if (flag21 > 0.5 and flag21 < 1.5) then
+      velocity(robo21,-125,-125)
+    end if
+
+    if (flag21 > 1.5) then
+      velocity(robo21,125,125)
+    end if
+	
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO ANDAR_FUNDO -------------------------------------------------
+-- Faz com que o robô ande para trás com a velocidade especificada
+on andar_fundo(robo22,vel2)
+
+  v = limitavelocidade(-vel2)
+
+  flag22 = sair_parede(robo22,v)
+
+    if (flag22 < 0.5) then
+      velocity(robo22,v,v)
+    end if
+
+    if (flag22 > 0.5 and flag22 < 1.5) then
+      velocity(robo22,-125,-125)
+    end if
+
+    if (flag22 > 1.5) then
+      velocity(robo22,125,125)
+    end if
+	
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO GIRAR_HORARIO -------------------------------------------------
+-- Faz com que o robô ande para trás com a velocidade especificada
+on girar_horario(robo23,vel3)
+
+  vl = limitavelocidade(vel3)
+  vr = limitavelocidade(-vel3)
+  velocity(robo23,vl,vr)
+  
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO GIRAR_ANTIHORARIO -------------------------------------------------
+-- Faz com que o robô ande para trás com a velocidade especificada
+on girar_antihorario(robo24,vel4)
+
+  vl = limitavelocidade(-vel4)
+  vr = limitavelocidade(vel4)
+  velocity(robo24,vl,vr)
+  
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO TANH --------------------------------------------------------
+-- Calcula a tangente hiperbólica de e
+on tanh(e)
+
+  expo=2.7182
+  var1 = power(expo,e)-power(expo,-e)
+  var2 = power(expo,e)+power(expo,-e)
+  var3 = var1/var2
+  return(var3)
+  
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO VAI_LINEAR --------------------------------------------------------
+-- calcula a velocidade linear necessária para chegar ao destino (função usada pela vai_para)
+on vai_linear(robo1,px1,py1,acelera)
+  -- aceleração de 0 a 125 (125 é aceleração máxima)
+  
+  v_min = 50
+  if acelera > 125 then acelera = 125
+  x = distancia(robo1,px1,py1)/(126 - acelera)
+  v_lin = 125*tanh(x)
+  if v_lin < v_min then v_lin = v_min
+  v_lin = limitavelocidade(v_lin)
+  return(v_lin)
+  
+end
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO DISTANCIA --------------------------------------------------------
+-- Calcula a distância do robô para um ponto especificado
+---- Esse ponto pode ser um ponto no campo, a bola ou mesmo um outro robô
+On distancia(robo2,px2,py2)
+
+  dx= robo2.pos.x-px2
+  dy= robo2.pos.y-py2
+  dx= dx*dx
+  dy= dy*dy
+  out=sqrt(dx+dy)
+  return(out)
+
+End
+
+
+
+
+
+
+
+------------------------------------------------------ FUNÇÃO LIMITAVELOCIDADE ----------------------------------------------------
+-- Limita a velocidade calculada para o máximo permitido para o robô
+on limitavelocidade(c)
+
+  if c > 125 then 
+	c = 125
+  end if
+  if c < -125 then
+	c = -125
+  end if
+  return(c)
+
+end
+
+
+
+
+
+
+
+-------------------------------------------------------- FUNÇÃO OLHAR --------------------------------------------------------------
+-- Calcula o ângulo que o robô precisa girar para que o robô "olhe" com a frente para a posição especificada
+-- o ângulo é retornado de -180 a 180
+on olhar(robo, px, py)
+  
+  fi = atan((robo.pos.y-py),(robo.pos.x-px))*180/PI
+ 
+  if px < robo.pos.x then
+    if py < robo.pos.y then
+	fi = fi - 180
+    end if
+    if py > robo.pos.y then
+	fi = fi + 180
+    end if
+  end if
+
+  R = robo.rot.z
+
+  if R >  360 then R = R - 360        --previne estouro de calculos
+  if R < -360 then R = R + 360        --previne estouro de calculos
+  if fi > 360 then fi = fi - 360      --previne estouro de calculos
+  if fi < -360 then fi = fi + 360     --previne estouro de calculos
+
+   
+  if R < 0 then R = R + 360          --muda pra 0 a 360
+  if fi < 0 then fi = fi + 360       --muda pra 0 a 360
+
+  if px > robo.pos.x then R = R + 180 
+  
+  v_ang = fi - R
+
+  if v_ang > 180 then v_ang = -360 + v_ang
+  if v_ang < -180 then v_ang = 360 + v_ang
+
+--  k_ang = 0.2  
+--  vr =  kang*k
+--  vl = -kang*k
+--  velocity(robo, vl, vr)
+  return(V_ang)
+  
+end
+
+
+
+
+
+
+
+-------------------------------------------------------- FUNÇÃO OLHAR_FUNDO ----------------------------------------------------------
+-- Calcula o ângulo que o robô precisa girar para que o robô "olhe" com o fundo para a posição especificada
+-- o ângulo é retornado de -180 a 180
+on olhar_fundo(robo10, px10, py10)
+
+  fi = atan((robo10.pos.y-py10),(robo10.pos.x-px10))*180/PI
+
+  if px10 < robo10.pos.x then
+    if py10 < robo10.pos.y then
+	fi = fi + 180
+    end if
+    if py10 > robo10.pos.y then
+	fi = fi - 180
+    end if
+  end if
+
+  R = robo10.rot.z
+
+  if R >  360 then R = R - 360        --previne estouro de calculos
+  if R < -360 then R = R + 360        --previne estouro de calculos
+  if fi > 360 then fi = fi - 360      --previne estouro de calculos
+  if fi < -360 then fi = fi + 360     --previne estouro de calculos
+
+  if R < 0 then R = R + 360          --muda pra 0 a 360
+  if fi < 0 then fi = fi + 360       --muda pra 0 a 360 
+
+  v_ang_f = fi - R
+
+  if v_ang_f > 180 then v_ang_f = -360 + v_ang_f
+  if v_ang_f < -180 then v_ang_f = 360 + v_ang_f
+  return(V_ang_f)
+  
+end
+
+
+
+
+
+
+
+-------------------------------------------------------- FUNÇÃO SAIR_PAREDE --------------------------------------------------------------
+-- essa função gera um flag que pode ser usado para fazer com que o robô recue
+-- caso esteja preso em uma parede ou em outro robô. Essa função retorna o seguinte:
+  -- flag = 0 : ok (não precisa sair)
+  -- flag = 1 : precisa sair de ré
+  -- flag = 2 : precisa sair pra frente
+on sair_parede(robo7,v7)
+
+  r = robo7.pos
+
+  rz = robo7.rot.z
+  if rz >  360 then rz = rz - 360        --previne estouro de calculos
+  if rz < -360 then rz = rz + 360        --previne estouro de calculos
+
+  if rz < -180 then rz = rz + 360        --previne estouro de calculos
+
+  if rz > 180 then rz = rz - 360        --coloca o ângulo entre 0 e + ou - 180
+
+  -- rz é o angulo de orientação do robô em -180 a 180
+  -- flag = 0 : ok
+  -- flag = 1 : sair de ré
+  -- flag = 2 : sair pra frente
+
+  flag = 0
+
+  if (r.x < 9 and abs(rz) > 140) then flag = 1
+  if (r.x > 91 and abs(rz) < 40) then flag = 1
+  if (r.y < 9 and rz < -50 and rz > -130) then flag = 1
+  if (r.y > 75 and rz < 130 and rz > 50) then flag = 1
+  if (r.y > 72 and r.x > 88 and rz > 30 and rz < 60) then flag = 1
+  if (r.y < 11 and r.x > 88 and rz < -30 and rz > -60) then flag = 1
+  if (r.y < 11 and r.x < 11.5 and rz > -150 and rz < -120) then flag = 1
+  if (r.y > 72 and r.x < 11.5 and rz < 150 and rz > 120) then flag = 1
+
+  if (r.x < 9 and abs(rz) < 40) then flag = 2
+  if (r.x > 91 and abs(rz) > 140) then flag = 2
+  if (r.y < 9 and rz < 130 and rz > 50) then flag = 2
+  if (r.y > 75 and rz < -50 and rz > -130) then flag = 2
+
+  if (r.y > 72 and r.x > 88 and rz > -150 and rz < -120) then flag = 2
+  if (r.y < 11 and r.x > 88 and rz < 150 and rz > 120) then flag = 2
+  if (r.y < 11 and r.x < 11.5 and rz > 30 and rz < 60) then flag = 2
+  if (r.y > 72 and r.x < 11.5 and rz < -30 and rz > -60) then flag = 2
+
+  dmin = 4
+  olhando = 30
+
+  d1 = distancia(robo7,y1.pos.x,y1.pos.y)
+  d2 = distancia(robo7,y2.pos.x,y2.pos.y)
+  d3 = distancia(robo7,y3.pos.x,y3.pos.y)
+  d4 = distancia(robo7,y4.pos.x,y4.pos.y)
+  d5 = distancia(robo7,y5.pos.x,y5.pos.y)
+  d6 = distancia(robo7,b1.pos.x,b1.pos.y)
+  d7 = distancia(robo7,b2.pos.x,b2.pos.y)
+  d8 = distancia(robo7,b3.pos.x,b3.pos.y)
+  d9 = distancia(robo7,b4.pos.x,b4.pos.y)
+  d0 = distancia(robo7,b5.pos.x,b5.pos.y)
+
+  a1 = olhar(robo7,y1.pos.x,y1.pos.y)
+  a2 = olhar(robo7,y2.pos.x,y2.pos.y)
+  a3 = olhar(robo7,y3.pos.x,y3.pos.y)
+  a4 = olhar(robo7,y4.pos.x,y4.pos.y)
+  a5 = olhar(robo7,y5.pos.x,y5.pos.y)
+  a6 = olhar(robo7,b1.pos.x,b1.pos.y)
+  a7 = olhar(robo7,b2.pos.x,b2.pos.y)
+  a8 = olhar(robo7,b3.pos.x,b3.pos.y)
+  a9 = olhar(robo7,b4.pos.x,b4.pos.y)
+  a0 = olhar(robo7,b5.pos.x,b5.pos.y)
+
+  if d1 < 0.1 then d1 = 10     -- evita que o robô desvie de si
+  if d2 < 0.1 then d2 = 10     -- evita que o robô desvie de si
+  if d3 < 0.1 then d3 = 10     -- evita que o robô desvie de si
+  if d4 < 0.1 then d4 = 10     -- evita que o robô desvie de si
+  if d5 < 0.1 then d5 = 10     -- evita que o robô desvie de si
+  if d6 < 0.1 then d6 = 10     -- evita que o robô desvie de si
+  if d7 < 0.1 then d7 = 10     -- evita que o robô desvie de si
+  if d8 < 0.1 then d8 = 10     -- evita que o robô desvie de si
+  if d9 < 0.1 then d9 = 10     -- evita que o robô desvie de si
+  if d0 < 0.1 then d0 = 10     -- evita que o robô desvie de si
+
+  if (d1 < dmin and abs(a1) < olhando and v7 > 0) then flag = 1
+  if (d2 < dmin and abs(a2) < olhando and v7 > 0) then flag = 1
+  if (d3 < dmin and abs(a3) < olhando and v7 > 0) then flag = 1
+  if (d4 < dmin and abs(a4) < olhando and v7 > 0) then flag = 1
+  if (d5 < dmin and abs(a5) < olhando and v7 > 0) then flag = 1
+  if (d6 < dmin and abs(a6) < olhando and v7 > 0) then flag = 1
+  if (d7 < dmin and abs(a7) < olhando and v7 > 0) then flag = 1
+  if (d8 < dmin and abs(a8) < olhando and v7 > 0) then flag = 1
+  if (d9 < dmin and abs(a9) < olhando and v7 > 0) then flag = 1
+  if (d0 < dmin and abs(a0) < olhando and v7 > 0) then flag = 1
+
+
+  olhando = 150
+
+
+  d1 = distancia(robo7,y1.pos.x,y1.pos.y)
+  d2 = distancia(robo7,y2.pos.x,y2.pos.y)
+  d3 = distancia(robo7,y3.pos.x,y3.pos.y)
+  d4 = distancia(robo7,y4.pos.x,y4.pos.y)
+  d5 = distancia(robo7,y5.pos.x,y5.pos.y)
+  d6 = distancia(robo7,b1.pos.x,b1.pos.y)
+  d7 = distancia(robo7,b2.pos.x,b2.pos.y)
+  d8 = distancia(robo7,b3.pos.x,b3.pos.y)
+  d9 = distancia(robo7,b4.pos.x,b4.pos.y)
+  d0 = distancia(robo7,b5.pos.x,b5.pos.y)
+
+  a1 = olhar(robo7,y1.pos.x,y1.pos.y)
+  a2 = olhar(robo7,y2.pos.x,y2.pos.y)
+  a3 = olhar(robo7,y3.pos.x,y3.pos.y)
+  a4 = olhar(robo7,y4.pos.x,y4.pos.y)
+  a5 = olhar(robo7,y5.pos.x,y5.pos.y)
+  a6 = olhar(robo7,b1.pos.x,b1.pos.y)
+  a7 = olhar(robo7,b2.pos.x,b2.pos.y)
+  a8 = olhar(robo7,b3.pos.x,b3.pos.y)
+  a9 = olhar(robo7,b4.pos.x,b4.pos.y)
+  a0 = olhar(robo7,b5.pos.x,b5.pos.y)
+
+  if d1 < 0.1 then d1 = 10     -- evita que o robô desvie de si
+  if d2 < 0.1 then d2 = 10     -- evita que o robô desvie de si
+  if d3 < 0.1 then d3 = 10     -- evita que o robô desvie de si
+  if d4 < 0.1 then d4 = 10     -- evita que o robô desvie de si
+  if d5 < 0.1 then d5 = 10     -- evita que o robô desvie de si
+  if d6 < 0.1 then d6 = 10     -- evita que o robô desvie de si
+  if d7 < 0.1 then d7 = 10     -- evita que o robô desvie de si
+  if d8 < 0.1 then d8 = 10     -- evita que o robô desvie de si
+  if d9 < 0.1 then d9 = 10     -- evita que o robô desvie de si
+  if d0 < 0.1 then d0 = 10     -- evita que o robô desvie de si
+
+  if (d1 < dmin and abs(a1) > olhando and v7 < 0) then flag = 2
+  if (d2 < dmin and abs(a2) > olhando and v7 < 0) then flag = 2
+  if (d3 < dmin and abs(a3) > olhando and v7 < 0) then flag = 2
+  if (d4 < dmin and abs(a4) > olhando and v7 < 0) then flag = 2
+  if (d5 < dmin and abs(a5) > olhando and v7 < 0) then flag = 2
+  if (d6 < dmin and abs(a6) > olhando and v7 < 0) then flag = 2
+  if (d7 < dmin and abs(a7) > olhando and v7 < 0) then flag = 2
+  if (d8 < dmin and abs(a8) > olhando and v7 < 0) then flag = 2
+  if (d9 < dmin and abs(a9) > olhando and v7 < 0) then flag = 2
+  if (d0 < dmin and abs(a0) > olhando and v7 < 0) then flag = 2
+
+  return(flag)
+  
+end
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------- FIM DAS FUNÇÕES  DE CONTROLE ---------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------- FIM DAS FUNÇÕES  DE CONTROLE ---------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------- FIM DAS FUNÇÕES  DE CONTROLE ---------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------- FIM DAS FUNÇÕES  DE CONTROLE ---------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
